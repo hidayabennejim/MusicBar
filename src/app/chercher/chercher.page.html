@@ -1,0 +1,90 @@
+<ion-header>
+    <ion-toolbar color="dark">
+          <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/clubs"></ion-back-button>
+          </ion-buttons>
+      <ion-title color="danger">Music Bar</ion-title>
+      <ion-buttons slot="top">
+          <ion-icon name="searchKey"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-searchbar  color="dark"
+          [(ngModel)]="searchKey"
+          (ionInput)="filterItems($event)"
+        ></ion-searchbar>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+
+        <ion-card
+            no-margin
+            class="no-radius"
+            *ngFor="let evenement of (evenement | async)">
+            <ion-item color="medium" [routerLink]="['/ajouter-evenement', evenement.id]">
+    
+              <ion-label>
+                  <h2 no-margin class="fw500 no-margin">
+                    <ion-text color="dark">{{ evenement.nom }} </ion-text>
+                  </h2>
+    
+                  <p class="text-11x no-margin">
+                    <ion-text color="primary">{{ evenement.FermetureGuestlist }}</ion-text>
+                  </p>
+    
+                  <p class="text-11x no-margin">
+                    <ion-text color="primary">{{ evenement.HeureMaximaledDArivee }}</ion-text>
+                  </p>
+              </ion-label>
+    
+              <ion-button
+                shape="round"
+                fill="outline"
+                size="small"
+                color="primary"
+                style="font-weight: 1000"
+                >
+                  {{ evenement.NombreDePersones }}
+            
+                </ion-button>
+    
+            </ion-item>
+        </ion-card>
+    </ion-list>
+    
+    
+</ion-content>
+<ion-tabs #tabs>
+    <ion-tab-bar slot="bottom">
+         <ion-tab-button tab="clubs">
+         <ion-icon name="wine"></ion-icon>
+         <ion-label>Clubs</ion-label>  
+         </ion-tab-button>
+  
+         
+          <ion-tab-button tab="evenements">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>Evénements</ion-label>  
+          </ion-tab-button>
+  
+         
+            <ion-tab-button tab="reservation">
+            <ion-icon name="bookmarks"></ion-icon>
+            <ion-label>Réservation</ion-label>  
+            </ion-tab-button>
+  
+           
+              <ion-tab-button tab="amis">
+              <ion-icon name="people"></ion-icon>
+              <ion-label>Amis</ion-label>  
+              </ion-tab-button>
+  
+              
+                <ion-tab-button tab="parametres">
+                <ion-icon name="settings"></ion-icon>
+                <ion-label>Parametres</ion-label>  
+                </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>

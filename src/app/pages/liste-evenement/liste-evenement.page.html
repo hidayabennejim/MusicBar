@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+    <ion-title>Ligne RX</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+      <ion-searchbar
+        [(ngModel)]="searchKey"
+        (ionInput)="filterItems($event)"
+      ></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/ajouter-evenement">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+  <ion-list>
+
+    <ion-card
+        no-margin
+        class="no-radius"
+        *ngFor="let evenement of (evenement | async)">
+        <ion-item color="medium" [routerLink]="['/ajouter-evenement', evenement.id]">
+
+          <ion-label>
+              <h2 no-margin class="fw500 no-margin">
+                <ion-text color="dark">{{ evenement.nom }} </ion-text>
+              </h2>
+
+              <p class="text-11x no-margin">
+                <ion-text color="primary">{{ evenement.FermetureGuestlist }}</ion-text>
+              </p>
+
+              <p class="text-11x no-margin">
+                <ion-text color="primary">{{ evenement.HeureMaximaledDArivee }}</ion-text>
+              </p>
+          </ion-label>
+
+          <ion-button
+            shape="round"
+            fill="outline"
+            size="small"
+            color="primary"
+            style="font-weight: 1000"
+            >
+              {{ evenement.NombreDePersones }}
+        
+            </ion-button>
+
+        </ion-item>
+    </ion-card>
+</ion-list>
+
+</ion-content>

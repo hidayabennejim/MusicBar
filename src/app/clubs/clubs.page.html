@@ -1,0 +1,65 @@
+<ion-header >
+    <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+          </ion-buttons>
+      <ion-title color="danger">Music Bar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button href="/chercher"><ion-icon name="search"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-buttons slot="top">
+        <ion-icon name="searchKey"></ion-icon>
+      </ion-buttons>
+     
+  </ion-toolbar>
+  
+ 
+  
+</ion-header>
+
+<ion-content>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/ajouter-evenement">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+  <ion-list>
+
+    <ion-card
+        no-margin
+        class="no-radius"
+        *ngFor="let evenement of evenement">
+        <ion-item color="medium" [routerLink]="['/ajouter-evenement', evenement.id]">
+          
+          <ion-label>
+              <ion-img src="assets/img/club.png"></ion-img>
+              <h2 no-margin class="fw500 no-margin">
+                <ion-text color="dark">{{ evenement.nom }} </ion-text>
+              </h2>
+
+              <p class="text-11x no-margin">
+                <ion-text color="primary">{{ evenement.FermetureGuestlist }}</ion-text>
+              </p>
+
+              <p class="text-11x no-margin">
+                <ion-text color="primary">{{ evenement.HeureMaximaledDArivee }}</ion-text>
+              </p>
+          </ion-label>
+
+          <ion-button
+            shape="round"
+            fill="outline"
+            size="small"
+            color="primary"
+            style="font-weight: 1000"
+            >
+              {{ evenement.NombreDePersones }}
+        
+            </ion-button>
+
+        </ion-item>
+    </ion-card>
+</ion-list>
+
+</ion-content>

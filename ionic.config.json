@@ -1,0 +1,7 @@
+{
+  "name": "enenement",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
